@@ -39,12 +39,16 @@ def makeMefHostList(targetDir,outputFile):
 
     f.close()
 
-if len(sys.argv) <= 2 :
-   printUseage()
-else :
-    if sys.argv[2] == '-b':
-        delPrefix(sys.argv[1])
-    if sys.argv[2] == '-m' and len(sys.argv) >= 4 :
-        makeMefHostList(sys.argv[1],sys.argv[3])
+def main():
+    if len(sys.argv) <= 2 :
+       printUseage()
     else :
-        printUseage()
+        if sys.argv[2] == '-b':
+            delPrefix(sys.argv[1])
+        if sys.argv[2] == '-m' and len(sys.argv) >= 4 :
+            makeMefHostList(sys.argv[1],sys.argv[3])
+        else :
+            printUseage()
+
+if __name__ == "__main__":
+    main()
