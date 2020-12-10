@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discover-mservice-deployment
+  labels:
+    app: discover-mservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discover-mservice
+  template:
+    metadata:
+      labels:
+        app: discover-mservice
+    spec:
+      containers:
+      - name: discover-mservice
+        image: test.test/test-test/discover-mservice:latest
+        resources:
+          limits:
+            memory: 300Mi
+            cpu: 300m
+          requests:
+            memory: 300Mi
+            cpu: 300m
+        ports:
+        - containerPort: 30302
+      imagePullSecrets:
+      - name: image-registry-hmsp-secret
