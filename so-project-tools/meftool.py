@@ -2,6 +2,9 @@ import os
 import sys
 import csv
 import re
+import argh
+
+
 def printUseage():
     print ('useage: meftool.py (folder pwd) (option) [output_filename]')
     print ('--- Options ---')
@@ -9,6 +12,7 @@ def printUseage():
     print ('-m [output filename fullpwd]: file list make csv with outputfilename')
 
 def delPrefix(targetDir):
+    "bigfix gather file name prefix delete ex:file_0_'"
     if os.path.isdir(targetDir)==False:
         print(targetDir+' dir isn\'t exist')
     else:
@@ -24,6 +28,7 @@ def delPrefix(targetDir):
         resultFiles = os.listdir(targetDir)
    
 def makeMefHostList(targetDir,outputFile):
+    "[output filename fullpwd]: file list make csv with outputfilename"
     workDir = os.getcwd()
     f = open(workDir+'\\'+outputFile,'wb+')    
     regex = re.compile (r'^[a-zA-Z]*_[0-9]*_') # KBLI_[DATE]_ find
@@ -39,6 +44,10 @@ def makeMefHostList(targetDir,outputFile):
 
     f.close()
 
+
+parser = argh.ArghParser()
+parser.add_commands([delPrefix,makeMefHostList])
+
 def main():
     if len(sys.argv) <= 2 :
        printUseage()
@@ -51,4 +60,4 @@ def main():
             printUseage()
 
 if __name__ == "__main__":
-    main()
+    parser.dispatch()
