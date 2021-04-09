@@ -30,12 +30,11 @@ def deleteFromList(dryRunFlag,listFile):
                 totalFiles += 1
                 stripedFileName = delFile.rstrip()
                 if os.path.isfile(stripedFileName):
-                    deletedFileCount += 1
-                    #print(stripedFileName)
-                    if dryRunFlag: # when dryrunflag True didn't remove
+                    deletedFileCount += 1                  
+                    if not dryRunFlag: # when dryrunflag True didn't remove
                         os.remove(stripedFileName)
-                        rsltLog.write(stripedFileName+" was removed")
-                    after.write(stripedFileName+'is deleted \n')  
+                        rslt = stripedFileName+" was removed\n"
+                        rsltLog.write(rslt.encode())
         delFiles.close()
         rsltLog.close()
     else:
