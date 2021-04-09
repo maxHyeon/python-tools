@@ -40,7 +40,6 @@ def deleteFromList(dryRunFlag,listFile):
     else:
         print("Check list file")
         return 0
-    
     if dryRunFlag:
         print('Dry Run Result : Delete Files count is '+str(totalFiles)+' and If run delete those '+str(deletedFileCount)+" files will removed.")
     elif not dryRunFlag :
