@@ -1,0 +1,7 @@
+.idea
+autoReport/*.xlsx
+autoReport/*.xls
+autoReport/*.pptx
+scheduleExcel/*.xlsx
+scheduleExcel/*.xls
+scheduleExcel/*.csv
